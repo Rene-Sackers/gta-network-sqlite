@@ -1,6 +1,7 @@
 ﻿using GTANetworkServer;
 using SQLiteLinqExample.resources.sqlite.Server.Models;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 
 namespace SQLiteLinqExample.resources.sqlite.Server
@@ -15,7 +16,7 @@ namespace SQLiteLinqExample.resources.sqlite.Server
 
         private void OnResourceStart()
         {
-            var databaseFilePath = API.getResourceFolder() + "\\Database.db";
+            var databaseFilePath = API.getResourceFolder() + Path.DirectorySeparatorChar + "Database.db";
             ContextFactory.DatabaseFilePath = databaseFilePath;
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DefaultDbContext, MigrationConfiguration>());
